@@ -71,7 +71,3 @@ After processing the log file, the script will display filtering statistics, inc
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/amoy6228/BurplogFilter/blob/main/LICENSE) file for details.
-
----
-
-This is a direct translation from the Chinese version you provided. Let me know if you'd like any further adjustments or additions!
