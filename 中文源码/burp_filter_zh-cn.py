@@ -13,24 +13,41 @@ def filter_burp_log(input_file, output_file, target_domains):
         content = f.read()
 
     # 优化后的正则表达式（保持原始分隔符长度）
-    block_pattern = re.compile(
+    block_pattern_no_ip = re.compile(
         r'(={20,}\n'  # 起始分隔符
         r'(\d{2}:\d{2}:\d{2})\s+'  # 时间戳（组1）
         r'(https?://[^\s/]+)\s+'  # 域名（组2）
-        # r'\[([^\]]+)\]\n'  # IP地址（组3）
+        r'={20,}\n'  # 分隔符
+        r'((?:.|\n)*?)'  # 请求内容（组3）
+        r'(?=\n={20,}|\Z))',  # 前瞻终止条件
+        re.DOTALL
+    )
+    blocks_no_ip = block_pattern_no_ip.findall(content)
+
+    block_pattern_ip = re.compile(
+        r'(={20,}\n'  # 起始分隔符
+        r'(\d{2}:\d{2}:\d{2})\s+'  # 时间戳（组1）
+        r'(https?://[^\s/]+)\s+'  # 域名（组2）
+        r'\[([^\]]+)\]\n'  # IP地址（组3）
         r'={20,}\n'  # 分隔符
         r'((?:.|\n)*?)'  # 请求内容（组4）
         r'(?=\n={20,}|\Z))',  # 前瞻终止条件
         re.DOTALL
     )
-    blocks = block_pattern.findall(content)
+    blocks_ip = block_pattern_ip.findall(content)
+    blocks = blocks_ip + blocks_no_ip
 
     filtered_blocks = []
     filtered_reasons = []
     domain_cache = set()
 
     for block in blocks:
-        timestamp, domain, request_content = block[1], block[2], block[3]
+        if len(block) == 4:
+            timestamp, domain, request_content = block[1], block[2], block[3]
+            ip = "0.0.0.0" # 设置一个默认值 为保持统一
+        elif len(block) == 5:
+            timestamp, domain, ip, request_content = block[1], block[2], block[3], block[4]
+
         request_lines = request_content.strip().split('\n')
 
         # 域名验证逻辑（支持子域名匹配）
@@ -84,7 +101,7 @@ def filter_burp_log(input_file, output_file, target_domains):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Burp日志过滤器 Version 0.1 - 按域名和静态资源过滤请求',
+        description='Burp日志过滤器 Version 0.2 - 按域名和静态资源过滤请求',
         formatter_class=argparse.RawTextHelpFormatter,
         epilog='使用示例:\n'
                '  python burp_filter.py -l burp.log -u "bing.com"\n'
