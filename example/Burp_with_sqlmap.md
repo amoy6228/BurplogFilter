@@ -26,8 +26,10 @@ sqlmap作为一款优秀的SQL注入测试插件被广泛的应用于渗透测�
 ---
 ## sqlamp的一些使用技巧
 - 通过 --batch 参数自动化的进行测试，官方的参数说明如下：
-> Act in non-interactive mode
+'''bash
+Act in non-interactive mode
 Switch: --batch
 
 If you want sqlmap to run as a batch tool, without any user's interaction when sqlmap requires it, you can force that by using switch --batch. This will leave sqlmap to go with a default behaviour whenever user's input would be required.
+'''
 
