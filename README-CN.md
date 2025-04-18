@@ -1,4 +1,5 @@
 # Burp Log Filter
+README Version: \[[English](README.md) | [简体中文](README_CN.md)\]
 
 一款用于过滤 Burp Suite 日志的 Python 脚本。该工具允许你处理 Burp 日志文件，过滤掉非目标域名的请求以及静态资源（例如图像、CSS、JavaScript）。它支持直接指定域名和通过域名文件输入。
 
