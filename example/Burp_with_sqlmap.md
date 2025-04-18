@@ -26,10 +26,23 @@ sqlmap作为一款优秀的SQL注入测试插件被广泛的应用于渗透测�
 ---
 ## sqlamp的一些使用技巧
 - 通过 --batch 参数自动化的进行测试，官方的参数说明如下：
-'''bash
+
+```bash
 Act in non-interactive mode
 Switch: --batch
 
 If you want sqlmap to run as a batch tool, without any user's interaction when sqlmap requires it, you can force that by using switch --batch. This will leave sqlmap to go with a default behaviour whenever user's input would be required.
-'''
+```
+
+- 借助 --smart参数进一步提高测试效率（存在测试参数遗漏的情况），让sqlmap自行判断哪个参数更容易注入，官方的参数说明如下：
+
+```bash
+Conduct thorough tests only if positive heuristic(s)
+Switch --smart
+
+There are cases when user has a large list of potential target URLs (e.g. provided with option -m) and he wants to find a vulnerable target as fast as possible. If switch --smart is used, only parameters with which DBMS error(s) can be provoked, are being used further in scans. Otherwise they are skipped.
+
+Example against a MySQL target:
+```
+
 
