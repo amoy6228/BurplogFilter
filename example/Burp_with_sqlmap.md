@@ -23,4 +23,11 @@ sqlmap作为一款优秀的SQL注入测试插件被广泛的应用于渗透测�
 - 过滤结束后会显示前10条日志不匹配的原因，可以通过修改代码增加显示数目
 ![d0cf3bccb076798f56f3ae24fd91a4a](https://github.com/user-attachments/assets/2c7dddc4-8c29-4619-bdf0-55313ba82789)
 
+---
+## sqlamp的一些使用技巧
+- 通过 --batch 参数自动化的进行测试，官方的参数说明如下：
+> Act in non-interactive mode
+Switch: --batch
+
+If you want sqlmap to run as a batch tool, without any user's interaction when sqlmap requires it, you can force that by using switch --batch. This will leave sqlmap to go with a default behaviour whenever user's input would be required.
 
