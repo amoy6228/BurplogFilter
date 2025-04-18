@@ -3,10 +3,13 @@ README Version: \[[English](README.md) | [简体中文](README_CN.md)\]
 
 一款用于过滤 Burp Suite 日志的 Python 脚本。该工具允许你处理 Burp 日志文件，过滤掉非目标域名的请求以及静态资源（例如图像、CSS、JavaScript）。它支持直接指定域名和通过域名文件输入。
 
+> 通过日志过滤大幅度提高sqlmap -l参数的测试效率，避免测试非授权的目标域名。
+
 ## 功能特点
 
 - 根据目标域名过滤请求，支持导入目标域名文件或同时指定多个域名。
 - 移除静态资源，如图像、CSS、JavaScript 等。
+- 完美匹配sqlmap -l参数，避免测试非授权目标，大幅提高测试效率。
 - 易于使用的命令行界面，提供多种选项。
 
 ## 需求
@@ -58,8 +61,8 @@ python burp_filter.py -uf domains.txt -o results.log
 ### 搭配 sqlmap 使用示例
 
 详细使用方法请参考该链接。
+Burpsuit与sqlmap联动: \[[使用文档](example/Burp_with_sqlmap.md)\]
 
-不匹配目标列表的域名以及像 `.png`、`.css` 等静态资源将被过滤掉。
 
 ## 统计信息
 
