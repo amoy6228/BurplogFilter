@@ -1,5 +1,3 @@
-Here's the translated content into English:
-
 # Burp Log Filter
 README Version: \[[English](README.md) | [简体中文](README_CN.md)\]
 
@@ -76,5 +74,3 @@ After processing the log file, the script will display statistics including the 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/amoy6228/BurplogFilter/blob/main/LICENSE) file for details. 
-
-This translation aims to accurately convey the meaning and functionality described in the original text while making it accessible to an English-speaking audience.
