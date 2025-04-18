@@ -1,11 +1,17 @@
-# Burp Log Filter
+Here's the translated content into English:
 
-A Python script designed to filter Burp Suite logs. This tool allows you to process Burp log files, filtering out requests to non-target domains and static resources (e.g., images, CSS, JavaScript). It supports both direct domain specification and domain file input.
+# Burp Log Filter
+README Version: \[[English](README.md) | [简体中文](README_CN.md)\]
+
+A Python script for filtering Burp Suite logs. This tool allows you to process Burp log files, filtering out requests not targeting specified domains as well as static resources (e.g., images, CSS, JavaScript). It supports direct domain specification and importing target domains from a file.
+
+> Significantly improve the efficiency of sqlmap -l parameter testing by filtering logs, avoiding unauthorized target domain testing.
 
 ## Features
 
-- Filter requests by target domain, with support for importing a domain file or specifying multiple domains simultaneously.
+- Filter requests based on target domains, supporting import of target domain files or specifying multiple domains simultaneously.
 - Remove static resources such as images, CSS, JavaScript, etc.
+- Perfectly compatible with the sqlmap -l parameter, avoiding unauthorized targets, significantly improving testing efficiency.
 - Easy-to-use command-line interface with various options.
 
 ## Requirements
@@ -18,14 +24,14 @@ A Python script designed to filter Burp Suite logs. This tool allows you to proc
 
 ## Installation
 
-Clone this repository to your local machine:
+Clone this repository locally:
 
 ```bash
 git clone https://github.com/amoy6228/BurplogFilter.git
 cd BurplogFilter
 ```
 
-Ensure that Python 3.x is installed.
+Ensure you have Python 3.x installed.
 
 ## Usage
 
@@ -35,39 +41,40 @@ Ensure that Python 3.x is installed.
 python burp_filter.py -l burp.log -u "bing.com"
 ```
 
-This command will process the `burp.log` file, filter requests to `bing.com`, and save the results to `filtered.log`.
+This command processes the `burp.log` file, filters out requests to `bing.com`, and saves the results to `filtered.log`.
 
-### Advanced Example with Domain File
+### Advanced Example Using Domain File
 
 ```bash
 python burp_filter.py -uf domains.txt -o results.log
 ```
 
-This command will load target domains from the `domains.txt` file (one domain per line) and output the filtered logs to `results.log`.
+This command loads target domains from `domains.txt` (one domain per line) and outputs filtered logs to `results.log`.
 
-### Command-Line Options
+### Command Line Options
 
-| Option                | Description                                             |
-| --------------------- | ------------------------------------------------------- |
-| `-l, --log`           | Path to Burp log file (default: `burp.log` in the current directory) |
-| `-u, --domain`        | Target domain(s) to filter (can be used multiple times or comma-separated) |
-| `-uf, --domain-file`  | Text file containing target domains (one domain per line) |
-| `-o, --output`        | Output file path for filtered logs (default: `filtered.log`) |
+| Option                 | Description                                                 |
+| ---------------------- | ------------------------------------------------------------ |
+| `-l, --log`            | Path to the Burp log file (default: `burp.log` in the current directory) |
+| `-u, --domain`         | Target domains to filter (can be used multiple times or separate multiple values with commas) |
+| `-uf, --domain-file`   | Text file containing target domains (one domain per line)    |
+| `-o, --output`         | Path to output the filtered log file (default: `filtered.log`) |
 
-### Example with SQLMap
+### Example with sqlmap Integration
 
-For detailed usage, refer to this link.
-
-Domains not matching the target list and static resources like `.png`, `.css`, etc., will be filtered out.
+For detailed usage instructions, refer to the linked documentation.
+Burpsuit with sqlmap: \[[Usage Document](example/Burp_with_sqlmap.md)\]
 
 ## Statistics
 
-After processing the log file, the script will display filtering statistics, including the total number of retained and filtered blocks, as well as the top 10 filtering reasons.
+After processing the log file, the script will display statistics including the total number of retained and filtered log blocks, along with the top 10 reasons for filtering.
 
 ## Author
 
-- **爱喝水的仙人掌** (GitHub: [amoy6228](https://github.com/amoy6228))
+- **Cactus that loves drinking water** (GitHub: [amoy6228](https://github.com/amoy6228))
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/amoy6228/BurplogFilter/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/amoy6228/BurplogFilter/blob/main/LICENSE) file for details. 
+
+This translation aims to accurately convey the meaning and functionality described in the original text while making it accessible to an English-speaking audience.
